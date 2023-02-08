@@ -1,4 +1,4 @@
-using WalletConnectSharp.Common.Model.Errors;
+﻿using WalletConnectSharp.Common.Model.Errors;
 using WalletConnectSharp.Core.Controllers;
 using WalletConnectSharp.Core.Interfaces;
 using WalletConnectSharp.Core.Models;
@@ -158,7 +158,7 @@ namespace WalletConnectSharp.Sign
             // Setup storage
             if (options.Storage == null)
             {
-                var storage = new FileSystemStorage();
+                var storage = new FileSystemStorage(options.DataPath);
                 options.Storage = storage;
 
                 // If keychain is also not set, use the same storage instance

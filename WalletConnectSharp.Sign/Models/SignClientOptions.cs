@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using WalletConnectSharp.Core.Interfaces;
 using WalletConnectSharp.Core.Models;
 using WalletConnectSharp.Core.Models.Pairing;
@@ -23,5 +23,8 @@ namespace WalletConnectSharp.Sign.Models
         /// </summary>
         [JsonProperty("metadata")]
         public Metadata Metadata { get; set; }
+
+        [JsonProperty("dataPath")]
+        public string DataPath { get; set; }
     }
 }
