@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -119,6 +119,11 @@ namespace WalletConnectSharp.Storage
             {
                 // Move the file to a .unsupported file
                 // and start fresh
+                if (File.Exists(FilePath + ".unsupported"))
+                {
+                    File.Delete(FilePath + ".unsupported");
+                }
+
                 File.Move(FilePath, FilePath + ".unsupported");
                 Entries = new Dictionary<string, object>();
             }
