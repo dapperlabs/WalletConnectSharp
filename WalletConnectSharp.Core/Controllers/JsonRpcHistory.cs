@@ -1,4 +1,4 @@
-using WalletConnectSharp.Common.Model.Errors;
+﻿using WalletConnectSharp.Common.Model.Errors;
 using WalletConnectSharp.Core.Interfaces;
 using WalletConnectSharp.Core.Models.History;
 using WalletConnectSharp.Events;
@@ -32,6 +32,15 @@ namespace WalletConnectSharp.Core.Controllers
         {
             get
             {
+                // Bug where requests fail after the first request
+                // https://github.com/WalletConnect/WalletConnectSharp/issues/77#issuecomment-1559880049
+
+                //return $"{_core.Name}-history-of-type-{typeof(T).Name}";
+
+                if (typeof(T).IsGenericType)
+                {
+                    return $"{_core.Name}-history-of-type-{typeof(T).GenericTypeArguments[0]}";
+                }
                 return $"{_core.Name}-history-of-type-{typeof(T).Name}";
             }
         }
